@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.canvas.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="mapPane" prefHeight="800.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.neet.DiamondHunter.MapViewer.MapController">
+   <children>
+      <BorderPane prefHeight="800.0" prefWidth="600.0">
+         <top>
+            <StackPane fx:id="mapStack" prefHeight="640.0" prefWidth="640.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Canvas fx:id="mapCanvas" height="640.0" width="640.0" />
+               </children>
+            </StackPane>
+         </top>
+         <bottom>
+            <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Region HBox.hgrow="ALWAYS" />
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Button fx:id="playButton" mnemonicParsing="false" onAction="#playGame" prefHeight="40.0" prefWidth="100.0" text="Play">
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="exitButton" mnemonicParsing="false" onAction="#exitGame" prefHeight="40.0" prefWidth="100.0" text="Exit">
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                  </VBox>
+                  <Region prefHeight="200.0" prefWidth="20.0" />
+               </children>
+            </HBox>
+         </bottom>
+      </BorderPane>
+   </children>
+</AnchorPane>
