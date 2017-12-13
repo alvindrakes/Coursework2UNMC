@@ -69,14 +69,6 @@ public class MapPane {
 
     }
 
-    /**
-     * Reads the value of each cell based on map[row][col].
-     * Each value is referred to a tile, which tile pixel is set by TileSize:-<br>
-     * - Interactive Objects (Tile.BLOCKED): (21: Tree branch - AXE Chop), (22 - Water - BOAT Sail)<br>
-     * - Obstacles (Tile.BLOCKED): (20 - Tree)<br>
-     * - Walkable (Tile.NORMAL): (1 - Normal green tile), (2 - Bush tile), (3 - Flower tile)
-     * @param s Map resource URI
-     */
     public void loadMap(String s) {
         try {
 
@@ -145,5 +137,9 @@ public class MapPane {
      */
     public int getNumCols() {
         return numCols;
+    }
+
+    public int getTileImageFromMap(int r, int c) {
+        return map[r][c];
     }
 }
