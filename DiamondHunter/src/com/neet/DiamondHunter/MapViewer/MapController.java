@@ -15,7 +15,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
@@ -23,7 +22,6 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.ClipboardContent;
@@ -71,7 +69,7 @@ public class MapController implements Initializable {
 
     //The right-side pane
     @FXML
-    private TextArea infoText;
+    private ImageView MsgBox ;
 
 
     @Override
@@ -87,9 +85,6 @@ public class MapController implements Initializable {
         sp = new ShowPlayer();
         sd = new ShowDiamonds();
 
-        // The tile information display box is never editable
-        infoText.setEditable(false);
-        infoText.setText("Welcome to Map Viewer!\nJust drag and drop the axe or boat to any legal location you wish!\nThe location is saved automatically!");
         initMapCanvas();
 
         // Initialises the size of the StackPane that contains the map in canvas
@@ -97,10 +92,6 @@ public class MapController implements Initializable {
         mapStack.relocate(20, 20);
         mapStack.setPrefSize((double) (mp.getNumRows() * mp.getTileSize()),
                 (double) (mp.getNumCols() * mp.getTileSize()));
-
-        mapPane.setOnMouseEntered(e -> {
-            infoText.setText("Welcome to Map Viewer!\nJust drag and drop the axe or boat to any legal location you wish!\nThe location is saved automatically!");
-        });;
 
         mapPane.setMinSize(mapStack.getPrefWidth(), mapStack.getPrefHeight());
 
@@ -213,9 +204,9 @@ public class MapController implements Initializable {
 
         final String tt = tileText;
 
-        label.setOnMouseEntered(e -> {
-            infoText.setText(tt);
-        });
+//        label.setOnMouseEntered(e -> {
+//            infoText.setText(tt);
+//        });
 
 
         tileMapping.add(label, colIndex, rowIndex);

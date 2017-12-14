@@ -7,14 +7,13 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<?import javafx.scene.layout.GridPane?>
 <AnchorPane fx:id="mapPane" prefHeight="800.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.neet.DiamondHunter.MapViewer.MapController">
    <children>
       <BorderPane prefHeight="800.0" prefWidth="600.0">
@@ -22,25 +21,20 @@
             <StackPane fx:id="mapStack" prefHeight="640.0" prefWidth="640.0" BorderPane.alignment="CENTER">
                <children>
                   <Canvas fx:id="mapCanvas" height="640.0" width="640.0" />
-                  <GridPane fx:id="tileMapping"></GridPane>
+                  <GridPane fx:id="tileMapping" />
                </children>
             </StackPane>
          </top>
          <bottom>
             <HBox prefHeight="158.0" prefWidth="640.0" style="-fx-background-color: #2B2B2B; -fx-border-color: #B2B2B2; -fx-border-width: 8;" BorderPane.alignment="CENTER">
                <children>
-<<<<<<< HEAD
-                  <VBox alignment="CENTER" prefHeight="164.0" prefWidth="162.0">
-=======
-                  <TextArea fx:id="infoText" prefHeight="101.0" prefWidth="200.0" />
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
->>>>>>> 32b76e100d4d67e298c69cd775a118d18c8062fb
                      <children>
                         <StackPane prefHeight="150.0" prefWidth="200.0">
                            <children>
                               <ImageView fitHeight="40.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../Pixel%20DH%20art/cursor.png" />
+                                    <Image url="@/Sprites/cursor.png" />
                                  </image>
                                  <StackPane.margin>
                                     <Insets bottom="-10.0" top="-5.0" />
@@ -63,7 +57,7 @@
                            <children>
                               <ImageView fitHeight="40.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../Pixel%20DH%20art/Axe.png" />
+                                    <Image url="@/Sprites/Axe.png" />
                                  </image>
                                  <StackPane.margin>
                                     <Insets />
@@ -83,7 +77,7 @@
                            <children>
                               <ImageView fitHeight="40.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../Pixel%20DH%20art/Boat.png" />
+                                    <Image url="@/Sprites/Boat.png" />
                                  </image>
                                  <StackPane.margin>
                                     <Insets bottom="5.0" />
@@ -114,9 +108,9 @@
                      <children>
                         <StackPane prefHeight="150.0" prefWidth="200.0">
                            <children>
-                              <ImageView fitHeight="225.0" fitWidth="225.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="MsgBox" fitHeight="225.0" fitWidth="225.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../Pixel%20DH%20art/messageBOX.png" />
+                                    <Image url="@/Sprites/messageBOX.png" />
                                  </image>
                               </ImageView>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="MESSAGE:" StackPane.alignment="TOP_LEFT">
@@ -133,7 +127,7 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="playButton" alignment="CENTER" mnemonicParsing="false" onAction="#playGame" prefHeight="40.0" prefWidth="100.0" style="-fx-background-image: url(&quot;./PlayButton.png&quot;);" text="Play" />
+                        <Button fx:id="playButton" alignment="CENTER" mnemonicParsing="false" onAction="#playGame" prefHeight="40.0" prefWidth="100.0" style="-fx-background-image: url(/Sprites/Playbutton.png);" text="Play" />
                         <Button fx:id="exitButton" alignment="CENTER" mnemonicParsing="false" onAction="#exitGame" prefHeight="40.0" prefWidth="100.0" text="Exit" />
                         <Button fx:id="exitButton1" alignment="CENTER" mnemonicParsing="false" onAction="#exitGame" prefHeight="40.0" prefWidth="100.0" text="reset" />
                      </children>
