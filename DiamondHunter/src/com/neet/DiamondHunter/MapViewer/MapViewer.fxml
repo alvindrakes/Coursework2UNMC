@@ -106,7 +106,7 @@
                            </HBox.margin>
                         </Button>
                         <Button fx:id="exitButton" maxHeight="48.0" maxWidth="48.0" mnemonicParsing="false" onAction="#exitGame" prefHeight="48.0" prefWidth="48.0" style="-fx-background-color: transparent;" />
-                        <Button fx:id="resetButton" maxHeight="48.0" maxWidth="48.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="48.0" style="-fx-background-color: transparent;" />
+                        <Button fx:id="resetButton" maxHeight="48.0" maxWidth="48.0" mnemonicParsing="false" onAction="#resetButton" prefHeight="48.0" prefWidth="48.0" style="-fx-background-color: transparent;" />
                      </children>
                   </HBox>
                </children>

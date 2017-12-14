@@ -342,6 +342,16 @@ public class MapController implements Initializable {
      * Viewer application. Resources are not released throughout the lifecycle.
      */
     @FXML
+    private void resetButton() {
+        tmpCoords[0] = 26;
+        tmpCoords[1] = 37;
+        tmpCoords[2] = 12;
+        tmpCoords[3] = 4;
+        saveCoor();
+        updateGridPane();
+    }
+
+    @FXML
     private void playGame() {
         if(isLaunchedMainGame == false) {
             Game.runGame();
