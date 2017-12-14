@@ -15,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
@@ -58,18 +59,15 @@ public class MapController implements Initializable {
     private String itemType = "";
 
     //The application pane and map pane
-    @FXML
-    private AnchorPane mapPane;
-    @FXML
-    private Canvas mapCanvas;
-    @FXML
-    private GridPane tileMapping;
-    @FXML
-    private StackPane mapStack;
+    @FXML    private AnchorPane mapPane;
+    @FXML    private Canvas mapCanvas;
+    @FXML    private GridPane tileMapping;
+    @FXML    private StackPane mapStack;
 
-    //The right-side pane
-    @FXML
-    private ImageView MsgBox ;
+    //Buttons
+    @FXML    private Button playButton;
+    @FXML    private Button exitButton;
+    @FXML    private Button resetButton;
 
 
     @Override
@@ -79,6 +77,14 @@ public class MapController implements Initializable {
         isLaunchedMainGame = false;
         // MapPane has all the loaders for the map
         mp = new MapPane();
+
+        //Button load images
+        Image playImage = new Image(getClass().getResourceAsStream("/Sprites/playbutton.gif"));
+        playButton.setGraphic(new ImageView(playImage));
+        Image exitImage = new Image(getClass().getResourceAsStream("/Sprites/exitbutton.gif"));
+        exitButton.setGraphic(new ImageView(exitImage));
+        Image resetImage = new Image(getClass().getResourceAsStream("/Sprites/resetbutton.gif"));
+            resetButton.setGraphic(new ImageView(resetImage));
 
         //Begin all entity coordinate configuration
         as = new ShowAxeShip();
@@ -213,11 +219,6 @@ public class MapController implements Initializable {
 
     }
 
-    /**
-     * Method to drag axe/boat
-     * @param source The label of the object going or being dragged
-     * @param itemType The string of the item being dragged
-     */
     private void dragSource(Label source, String item) {
         source.setOnDragDetected((MouseEvent e) -> {
             Dragboard db = source.startDragAndDrop(TransferMode.MOVE);
@@ -331,8 +332,6 @@ public class MapController implements Initializable {
      * Viewer application. Resources are not released throughout the lifecycle.
      */
     @FXML
-
-
     private void playGame() {
         if(isLaunchedMainGame == false) {
             Game.runGame();

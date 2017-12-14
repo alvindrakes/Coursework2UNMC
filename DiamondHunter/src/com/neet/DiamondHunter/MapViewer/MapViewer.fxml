@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,7 +22,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="mapPane" prefHeight="800.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.neet.DiamondHunter.MapViewer.MapController">
+<AnchorPane fx:id="mapPane" prefHeight="800.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.neet.DiamondHunter.MapViewer.MapController">
    <children>
       <BorderPane prefHeight="800.0" prefWidth="600.0">
          <top>
@@ -26,98 +34,51 @@
             </StackPane>
          </top>
          <bottom>
-            <HBox prefHeight="158.0" prefWidth="640.0" style="-fx-background-color: #2B2B2B; -fx-border-color: #B2B2B2; -fx-border-width: 8;" BorderPane.alignment="CENTER">
+            <HBox prefHeight="160" prefWidth="640" style="-fx-background-color: #2B2B2B; -fx-border-color: #B2B2B2;" BorderPane.alignment="CENTER">
                <children>
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                  <VBox alignment="CENTER" maxHeight="160.0" maxWidth="160.0" prefHeight="160.0" prefWidth="160.0">
                      <children>
-                        <StackPane prefHeight="150.0" prefWidth="200.0">
+                        <StackPane prefHeight="48.0" prefWidth="120.0">
                            <children>
-                              <ImageView fitHeight="40.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="48.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@/Sprites/cursor.png" />
-                                 </image>
-                                 <StackPane.margin>
-                                    <Insets bottom="-10.0" top="-5.0" />
-                                 </StackPane.margin>
-                              </ImageView>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="22, 70">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                                 <StackPane.margin>
-                                    <Insets left="40.0" />
-                                 </StackPane.margin>
-                              </Text>
-                           </children>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                        </StackPane>
-                        <StackPane prefHeight="150.0" prefWidth="200.0">
-                           <children>
-                              <ImageView fitHeight="40.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@/Sprites/Axe.png" />
+                                    <Image url="@/Sprites/mousecoordinate.gif" />
                                  </image>
                                  <StackPane.margin>
                                     <Insets />
                                  </StackPane.margin>
                               </ImageView>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="40, 60">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                                 <StackPane.margin>
-                                    <Insets left="40.0" />
-                                 </StackPane.margin>
-                              </Text>
                            </children>
                         </StackPane>
-                        <StackPane prefHeight="150.0" prefWidth="200.0">
+                        <StackPane prefHeight="48.0" prefWidth="120.0">
                            <children>
-                              <ImageView fitHeight="40.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@/Sprites/Boat.png" />
-                                 </image>
-                                 <StackPane.margin>
-                                    <Insets bottom="5.0" />
-                                 </StackPane.margin>
+                              <ImageView fitHeight="48.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                                  <image>
+                                      <Image url="@/Sprites/axecoordinate.gif" />
+                                  </image>
                               </ImageView>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="49, 80">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                                 <StackPane.margin>
-                                    <Insets left="40.0" />
-                                 </StackPane.margin>
-                              </Text>
+                           </children>
+                        </StackPane>
+                        <StackPane prefHeight="48.0" prefWidth="120.0">
+                           <children>
+                              <ImageView fitHeight="48.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                                  <image>
+                                      <Image url="@/Sprites/boatcoordinate.gif" />
+                                  </image>
+                              </ImageView>
                            </children>
                         </StackPane>
                      </children>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                     <padding>
-                        <Insets left="40.0" right="56.0" />
-                     </padding>
                   </VBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
                      <children>
-                        <StackPane prefHeight="150.0" prefWidth="200.0">
+                        <StackPane prefHeight="160.0" prefWidth="240.0">
                            <children>
-                              <ImageView fx:id="MsgBox" fitHeight="225.0" fitWidth="225.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="160.0" fitWidth="240.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@/Sprites/messageBOX.png" />
+                                    <Image url="@/Sprites/messagebox.gif" />
                                  </image>
                               </ImageView>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="MESSAGE:" StackPane.alignment="TOP_LEFT">
-                                 <StackPane.margin>
-                                    <Insets left="10.0" top="10.0" />
-                                 </StackPane.margin>
-                              </Text>
                            </children>
                            <opaqueInsets>
                               <Insets />
@@ -125,11 +86,15 @@
                         </StackPane>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                  <HBox alignment="CENTER" maxHeight="160.0" maxWidth="160.0" prefHeight="160.0" prefWidth="160.0">
                      <children>
-                        <Button fx:id="playButton" alignment="CENTER" mnemonicParsing="false" onAction="#playGame" prefHeight="40.0" prefWidth="100.0" text="Play" />
-                        <Button fx:id="exitButton" alignment="CENTER" mnemonicParsing="false" onAction="#exitGame" prefHeight="40.0" prefWidth="100.0" text="Exit" />
-                        <Button fx:id="exitButton1" alignment="CENTER" mnemonicParsing="false" onAction="#exitGame" prefHeight="40.0" prefWidth="100.0" text="reset" />
+                        <Button fx:id="playButton" maxHeight="48.0" maxWidth="48.0" mnemonicParsing="false" onAction="#playGame" prefHeight="48.0" prefWidth="48.0" style="-fx-background-color: transparent;">
+                           <HBox.margin>
+                              <Insets left="6.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="exitButton" maxHeight="48.0" maxWidth="48.0" mnemonicParsing="false" onAction="#exitGame" prefHeight="48.0" prefWidth="48.0" style="-fx-background-color: transparent;" />
+                        <Button fx:id="resetButton" maxHeight="48.0" maxWidth="48.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="48.0" style="-fx-background-color: transparent;" />
                      </children>
                   </HBox>
                </children>
