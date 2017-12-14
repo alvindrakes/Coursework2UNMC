@@ -7,17 +7,22 @@ package com.neet.DiamondHunter.EntityViewer;
  * */
 
 
+import com.neet.DiamondHunter.MapViewer.MapController;
 import com.neet.DiamondHunter.MapViewer.WriteCoord;
 
+import javafx.fxml.FXML;
 import javafx.scene.image.WritableImage;
+
+import java.awt.*;
 
 public class ShowAxeShip extends AxeShip {
 
-    private int[] coordinates;
+    int[] coordinates;
 
     //items
     public static final int BOAT = 0;
     public static final int AXE = 1;
+
 
     public ShowAxeShip() {
         coordinates = new int[4];
@@ -67,6 +72,7 @@ public class ShowAxeShip extends AxeShip {
         String coords = Integer.toString(ar) + "," + Integer.toString(ac) + ","
                 + Integer.toString(br) + "," + Integer.toString(bc);
         WriteCoord.overwriteFile(coords,1);
+
     }
 
 }

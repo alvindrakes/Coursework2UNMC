@@ -17,7 +17,6 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
@@ -31,6 +30,7 @@ import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
+import javafx.scene.text.Text;
 
 /**
  * Main controller for the interface. Any interaction in the
@@ -63,6 +63,8 @@ public class MapController implements Initializable {
     @FXML    private Canvas mapCanvas;
     @FXML    private GridPane tileMapping;
     @FXML    private StackPane mapStack;
+    @FXML    private Label currentCoord;
+    @FXML    private String tileText;
 
     //Buttons
     @FXML    private Button playButton;
@@ -124,7 +126,7 @@ public class MapController implements Initializable {
      * Initialises the grid on top of the map that handles input validation and
      * movement of boat and axe.
      */
-    private void initTileMapping() {
+    private void initTileMapping(){
         tileInfo = new TileInformation[mp.getNumRows()][mp.getNumCols()];
         for (int i = 0; i < tileInfo.length; i++) {
             tileMapping.getColumnConstraints().add(new ColumnConstraints((double) (mp.getTileSize())));
@@ -145,26 +147,28 @@ public class MapController implements Initializable {
      * @param colIndex The column index of the GridPane.
      * @param rowIndex The row index of the GridPane.
      */
-    private void addTile(int colIndex, int rowIndex) {
+    private void addTile(int colIndex, int rowIndex){
 
+        String StoreCoord;
         Label label = new Label();
         label.setMinSize(mp.getTileSize(), mp.getTileSize());
-        String tileText = "Coordinate: " + Integer.toString(rowIndex) + " x " + Integer.toString(colIndex)
-                + "\nTile Image: ";
+        StoreCoord = Integer.toString(rowIndex)+ "," + Integer.toString(colIndex);
 
-        if (tileInfo[rowIndex][colIndex].getTileImageType() == TileInformation.GRASS) {
-            tileText += "Grassy tile";
-        } else if (tileInfo[rowIndex][colIndex].getTileImageType() == TileInformation.BUSH) {
-            tileText += "Bushy tile";
-        } else if (tileInfo[rowIndex][colIndex].getTileImageType() == TileInformation.FLOWER) {
-            tileText += "Flowery tile";
-        } else if (tileInfo[rowIndex][colIndex].getTileImageType() == TileInformation.GREENTREE) {
-            tileText += "Green tree";
-        } else if (tileInfo[rowIndex][colIndex].getTileImageType() == TileInformation.DEADTREE) {
-            tileText += "Dead tree";
-        } else if (tileInfo[rowIndex][colIndex].getTileImageType() == TileInformation.WATER) {
-            tileText += "Water";
-        }
+        currentCoord.setText("-");
+
+//        if (tileInfo[rowIndex][colIndex].getTileImageType() == TileInformation.GRASS) {
+//            tileText += "Grassy tile";
+//        } else if (tileInfo[rowIndex][colIndex].getTileImageType() == TileInformation.BUSH) {
+//            tileText += "Bushy tile";
+//        } else if (tileInfo[rowIndex][colIndex].getTileImageType() == TileInformation.FLOWER) {
+//            tileText += "Flowery tile";
+//        } else if (tileInfo[rowIndex][colIndex].getTileImageType() == TileInformation.GREENTREE) {
+//            tileText += "Green tree";
+//        } else if (tileInfo[rowIndex][colIndex].getTileImageType() == TileInformation.DEADTREE) {
+//            tileText += "Dead tree";
+//        } else if (tileInfo[rowIndex][colIndex].getTileImageType() == TileInformation.WATER) {
+//            tileText += "Water";
+//        }
 
 		//display boat on top of tile
 		if(as.compareCoordinates(rowIndex, colIndex, ShowAxeShip.BOAT)){
@@ -210,9 +214,9 @@ public class MapController implements Initializable {
 
         final String tt = tileText;
 
-//        label.setOnMouseEntered(e -> {
-//            infoText.setText(tt);
-//        });
+        label.setOnMouseEntered(e -> {
+            currentCoord.setText(StoreCoord);
+        });
 
 
         tileMapping.add(label, colIndex, rowIndex);
@@ -300,7 +304,7 @@ public class MapController implements Initializable {
      * Refreshes the GridPane every time a drag and drop action is completed successfully.
      * Saves the changed coordinates of the moved item as well.
      */
-    private void updateGridPane() {
+    private void updateGridPane(){
         as.getEntityPosition();
         sp.getEntityPosition();
         sd.getEntityPosition();
