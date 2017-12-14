@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8fcbbe11-1bff-4653-924e-aec283875e7a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DiamondHunter/src/com/neet/DiamondHunter/MapViewer/MapViewer.fxml" afterPath="$PROJECT_DIR$/DiamondHunter/src/com/neet/DiamondHunter/MapViewer/MapViewer.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Entity-Coordinates.txt" afterPath="$PROJECT_DIR$/Entity-Coordinates.txt" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,8 +17,8 @@
       <file leaf-file-name="MapLauncher.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/DiamondHunter/src/com/neet/DiamondHunter/MapViewer/MapLauncher.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+            <state relative-caret-position="432">
+              <caret line="30" column="1" lean-forward="true" selection-start-line="30" selection-start-column="1" selection-end-line="30" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -27,9 +27,25 @@
       <file leaf-file-name="MapViewer.fxml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DiamondHunter/src/com/neet/DiamondHunter/MapViewer/MapViewer.fxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="648">
-              <caret line="36" column="65" lean-forward="false" selection-start-line="36" selection-start-column="65" selection-end-line="36" selection-end-column="65" />
-              <folding />
+            <state relative-caret-position="486">
+              <caret line="27" column="67" lean-forward="false" selection-start-line="27" selection-start-column="67" selection-end-line="27" selection-end-column="67" />
+              <folding>
+                <marker date="1513261331188" expanded="true" signature="4956:4995" ph="..." />
+                <marker date="1513261331188" expanded="true" signature="4956:5158" ph="..." />
+                <marker date="1513261331188" expanded="true" signature="4956:5191" ph="..." />
+                <marker date="1513261331188" expanded="true" signature="4956:5217" ph="..." />
+                <marker date="1513261331188" expanded="true" signature="4956:6228" ph="..." />
+                <marker date="1513261331188" expanded="true" signature="4956:6248" ph="..." />
+                <marker date="1513261331188" expanded="true" signature="4956:6267" ph="..." />
+                <marker date="1513261331188" expanded="true" signature="4956:6287" ph="..." />
+                <marker date="1513261331188" expanded="true" signature="4956:6302" ph="..." />
+                <marker date="1513261331188" expanded="true" signature="4956:6316" ph="..." />
+                <marker date="1513261331188" expanded="true" signature="5037:5121" ph="..." />
+                <marker date="1513261331188" expanded="true" signature="5333:6201" ph="..." />
+                <marker date="1513261331188" expanded="true" signature="5365:6175" ph="..." />
+                <marker date="1513261331188" expanded="true" signature="5573:5742" ph="..." />
+                <marker date="1513261331188" expanded="true" signature="5614:5708" ph="..." />
+              </folding>
             </state>
           </provider>
           <provider editor-type-id="JavaFX-Scene-Builder">
@@ -289,12 +305,12 @@
       <updated>1513242340869</updated>
       <workItem from="1513242348321" duration="119000" />
       <workItem from="1513242667800" duration="292000" />
-      <workItem from="1513259472441" duration="87000" />
+      <workItem from="1513259472441" duration="678000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="498000" />
+    <option name="totallyTimeSpent" value="1089000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="830" extended-state="1" />
@@ -356,7 +372,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="648">
           <caret line="36" column="65" lean-forward="false" selection-start-line="36" selection-start-column="65" selection-end-line="36" selection-end-column="65" />
-          <folding />
+          <folding>
+            <marker date="1513261331188" expanded="true" signature="4956:4995" ph="..." />
+            <marker date="1513261331188" expanded="true" signature="4956:5158" ph="..." />
+            <marker date="1513261331188" expanded="true" signature="4956:5191" ph="..." />
+            <marker date="1513261331188" expanded="true" signature="4956:5217" ph="..." />
+            <marker date="1513261331188" expanded="true" signature="4956:6228" ph="..." />
+            <marker date="1513261331188" expanded="true" signature="4956:6248" ph="..." />
+            <marker date="1513261331188" expanded="true" signature="4956:6267" ph="..." />
+            <marker date="1513261331188" expanded="true" signature="4956:6287" ph="..." />
+            <marker date="1513261331188" expanded="true" signature="4956:6302" ph="..." />
+            <marker date="1513261331188" expanded="true" signature="4956:6316" ph="..." />
+            <marker date="1513261331188" expanded="true" signature="5037:5121" ph="..." />
+            <marker date="1513261331188" expanded="true" signature="5333:6201" ph="..." />
+            <marker date="1513261331188" expanded="true" signature="5365:6175" ph="..." />
+            <marker date="1513261331188" expanded="true" signature="5573:5742" ph="..." />
+            <marker date="1513261331188" expanded="true" signature="5614:5708" ph="..." />
+          </folding>
         </state>
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder">
@@ -380,9 +412,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/DiamondHunter/src/com/neet/DiamondHunter/MapViewer/MapViewer.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="36" column="65" lean-forward="false" selection-start-line="36" selection-start-column="65" selection-end-line="36" selection-end-column="65" />
-          <folding />
+        <state relative-caret-position="486">
+          <caret line="27" column="67" lean-forward="false" selection-start-line="27" selection-start-column="67" selection-end-line="27" selection-end-column="67" />
+          <folding>
+            <marker date="1513261331188" expanded="true" signature="4956:4995" ph="..." />
+            <marker date="1513261331188" expanded="true" signature="4956:5158" ph="..." />
+            <marker date="1513261331188" expanded="true" signature="4956:5191" ph="..." />
+            <marker date="1513261331188" expanded="true" signature="4956:5217" ph="..." />
+            <marker date="1513261331188" expanded="true" signature="4956:6228" ph="..." />
+            <marker date="1513261331188" expanded="true" signature="4956:6248" ph="..." />
+            <marker date="1513261331188" expanded="true" signature="4956:6267" ph="..." />
+            <marker date="1513261331188" expanded="true" signature="4956:6287" ph="..." />
+            <marker date="1513261331188" expanded="true" signature="4956:6302" ph="..." />
+            <marker date="1513261331188" expanded="true" signature="4956:6316" ph="..." />
+            <marker date="1513261331188" expanded="true" signature="5037:5121" ph="..." />
+            <marker date="1513261331188" expanded="true" signature="5333:6201" ph="..." />
+            <marker date="1513261331188" expanded="true" signature="5365:6175" ph="..." />
+            <marker date="1513261331188" expanded="true" signature="5573:5742" ph="..." />
+            <marker date="1513261331188" expanded="true" signature="5614:5708" ph="..." />
+          </folding>
         </state>
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder">
@@ -391,8 +439,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/DiamondHunter/src/com/neet/DiamondHunter/MapViewer/MapLauncher.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+        <state relative-caret-position="432">
+          <caret line="30" column="1" lean-forward="true" selection-start-line="30" selection-start-column="1" selection-end-line="30" selection-end-column="1" />
           <folding />
         </state>
       </provider>
