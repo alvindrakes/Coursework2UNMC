@@ -22,102 +22,100 @@ import com.neet.DiamondHunter.Manager.Keys;
 import com.neet.DiamondHunter.MapViewer.WriteCoord;
 import com.neet.DiamondHunter.TileMap.TileMap;
 
-import javax.swing.*;
-
 public class PlayState extends GameState {
-	
+
 	// player
 	private Player player;
-	
+
 	// tilemap
 	private TileMap tileMap;
-	
+
 	// diamonds
 	private ArrayList<Diamond> diamonds;
-	
+
 	// items
 	private ArrayList<Item> items;
-	
+
 	// sparkles
 	private ArrayList<Sparkle> sparkles;
-	
+
 	// camera position
 	private int xsector;
 	private int ysector;
-	private int sectorSize; 
-	
+	private int sectorSize;
+
 	// hud
 	private Hud hud;
-	
+
 	// events
 	private boolean blockInput;
 	private boolean eventStart;
 	private boolean eventFinish;
 	private int eventTick;
-	
+
 	// transition box
 	private ArrayList<Rectangle> boxes;
-	
+
 	public PlayState(GameStateManager gsm) {
 		super(gsm);
 	}
-	
+
 	public void init() {
-		
+
 		// create lists
 		diamonds = new ArrayList<Diamond>();
 		sparkles = new ArrayList<Sparkle>();
 		items = new ArrayList<Item>();
-		
+
 		// load map
 		tileMap = new TileMap(16);
 		tileMap.loadTiles("/Tilesets/testtileset.gif");
 		tileMap.loadMap("/Maps/testmap.map");
-		
+
 		// create player
 		player = new Player(tileMap);
-		
+
 		// fill lists
 		populateDiamonds();
 		populateItems();
-		
+
 		// initialize player
 		player.setTilePosition(17, 17);
 		player.setTotalDiamonds(diamonds.size());
-		
+
 		// set up camera position
 		sectorSize = GamePanel.WIDTH;
 		xsector = player.getx() / sectorSize;
 		ysector = player.gety() / sectorSize;
 		tileMap.setPositionImmediately(-xsector * sectorSize, -ysector * sectorSize);
-		
+
 		// load hud
 		hud = new Hud(player, diamonds);
-		
+
 		// load music
 		JukeBox.load("/Music/bgmusic.mp3", "music1");
 		JukeBox.setVolume("music1", -10);
 		JukeBox.loop("music1", 1000, 1000, JukeBox.getFrames("music1") - 1000);
 		JukeBox.load("/Music/finish.mp3", "finish");
 		JukeBox.setVolume("finish", -10);
-		
+
 		// load sfx
 		JukeBox.load("/SFX/collect.wav", "collect");
 		JukeBox.load("/SFX/mapmove.wav", "mapmove");
 		JukeBox.load("/SFX/tilechange.wav", "tilechange");
 		JukeBox.load("/SFX/splash.wav", "splash");
-		
+
 		// start event
 		boxes = new ArrayList<Rectangle>();
 		eventStart = true;
 		eventStart();
-			
+
 	}
-	
+
 	private void populateDiamonds() {
-		
+
 		Diamond d;
-		
+
 		d = new Diamond(tileMap);
 		d.setTilePosition(20, 20);
 		d.addChange(new int[] { 23, 19, 1 });
@@ -136,7 +134,7 @@ public class PlayState extends GameState {
 		d.setTilePosition(4, 34);
 		d.addChange(new int[] { 31, 21, 1 });
 		diamonds.add(d);
-		
+
 		d = new Diamond(tileMap);
 		d.setTilePosition(28, 19);
 		diamonds.add(d);
@@ -170,37 +168,39 @@ public class PlayState extends GameState {
 		d = new Diamond(tileMap);
 		d.setTilePosition(13, 20);
 		diamonds.add(d);
-		
-	}
-	
-	private void populateItems() {
 
-	    //itemCoord loads the new custom item coordinates into the game.
-        int[] itemCoord = WriteCoord.getCoord(1); //1 indicates line 1 which is the axe and boat coordinates.
-        Item item;
-        item = new Item(tileMap);
-        item.setType(Item.AXE);
-        item.setTilePosition(itemCoord[0], itemCoord[1]);
-        items.add(item);
-        item = new Item(tileMap);
-        item.setType(Item.BOAT);
-        item.setTilePosition(itemCoord[2], itemCoord[3]);
-        items.add(item);
 	}
-	
+
+	private void populateItems() {
+		int[] itemPos = WriteCoord.getCoord(1);
+
+		Item item;
+
+		item = new Item(tileMap);
+		item.setType(Item.AXE);
+		item.setTilePosition(itemPos[0],itemPos[1]);
+		items.add(item);
+
+		item = new Item(tileMap);
+		item.setType(Item.BOAT);
+		item.setTilePosition(itemPos[2],itemPos[3]);
+		items.add(item);
+
+	}
+
 	public void update() {
-		
+
 		// check keys
 		handleInput();
-		
+
 		// check events
 		if(eventStart) eventStart();
 		if(eventFinish) eventFinish();
-		
+
 		if(player.numDiamonds() == player.getTotalDiamonds()) {
 			eventFinish = blockInput = true;
 		}
-		
+
 		// update camera
 		int oldxs = xsector;
 		int oldys = ysector;
@@ -208,40 +208,40 @@ public class PlayState extends GameState {
 		ysector = player.gety() / sectorSize;
 		tileMap.setPosition(-xsector * sectorSize, -ysector * sectorSize);
 		tileMap.update();
-		
+
 		if(oldxs != xsector || oldys != ysector) {
 			JukeBox.play("mapmove");
 		}
-		
+
 		if(tileMap.isMoving()) return;
-		
+
 		// update player
 		player.update();
-		
+
 		// update diamonds
 		for(int i = 0; i < diamonds.size(); i++) {
-			
+
 			Diamond d = diamonds.get(i);
 			d.update();
-			
+
 			// player collects diamond
 			if(player.intersects(d)) {
-				
+
 				// remove from list
 				diamonds.remove(i);
 				i--;
-				
+
 				// increment amount of collected diamonds
 				player.collectedDiamond();
-				
+
 				// play collect sound
 				JukeBox.play("collect");
-				
+
 				// add new sparkle
 				Sparkle s = new Sparkle(tileMap);
 				s.setPosition(d.getx(), d.gety());
 				sparkles.add(s);
-				
+
 				// make any changes to tile map
 				ArrayList<int[]> ali = d.getChanges();
 				for(int[] j : ali) {
@@ -250,10 +250,10 @@ public class PlayState extends GameState {
 				if(ali.size() != 0) {
 					JukeBox.play("tilechange");
 				}
-				
+
 			}
 		}
-		
+
 		// update sparkles
 		for(int i = 0; i < sparkles.size(); i++) {
 			Sparkle s = sparkles.get(i);
@@ -263,7 +263,7 @@ public class PlayState extends GameState {
 				i--;
 			}
 		}
-		
+
 		// update items
 		for(int i = 0; i < items.size(); i++) {
 			Item item = items.get(i);
@@ -277,43 +277,43 @@ public class PlayState extends GameState {
 				sparkles.add(s);
 			}
 		}
-		
+
 	}
-	
+
 	public void draw(Graphics2D g) {
-		
+
 		// draw tilemap
 		tileMap.draw(g);
-		
+
 		// draw player
 		player.draw(g);
-		
+
 		// draw diamonds
 		for(Diamond d : diamonds) {
 			d.draw(g);
 		}
-		
+
 		// draw sparkles
 		for(Sparkle s : sparkles) {
 			s.draw(g);
 		}
-		
+
 		// draw items
 		for(Item i : items) {
 			i.draw(g);
 		}
-		
+
 		// draw hud
 		hud.draw(g);
-		
+
 		// draw transition boxes
 		g.setColor(java.awt.Color.BLACK);
 		for(int i = 0; i < boxes.size(); i++) {
 			g.fill(boxes.get(i));
 		}
-		
+
 	}
-	
+
 	public void handleInput() {
 		if(Keys.isPressed(Keys.ESCAPE)) {
 			JukeBox.stop("music1");
@@ -326,9 +326,9 @@ public class PlayState extends GameState {
 		if(Keys.isDown(Keys.DOWN)) player.setDown();
 		if(Keys.isPressed(Keys.SPACE)) player.setAction();
 	}
-	
+
 	//===============================================
-	
+
 	private void eventStart() {
 		eventTick++;
 		if(eventTick == 1) {
@@ -354,7 +354,7 @@ public class PlayState extends GameState {
 			eventTick = 0;
 		}
 	}
-	
+
 	private void eventFinish() {
 		eventTick++;
 		if(eventTick == 1) {
@@ -384,5 +384,5 @@ public class PlayState extends GameState {
 			}
 		}
 	}
-	
+
 }

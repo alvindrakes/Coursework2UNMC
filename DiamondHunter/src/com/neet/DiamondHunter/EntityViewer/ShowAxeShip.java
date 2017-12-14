@@ -24,11 +24,9 @@ public class ShowAxeShip extends AxeShip {
     public static final int AXE = 1;
     public static String storeAxeCoord, storeBoatCoord;
 
-
-
     public ShowAxeShip() {
 
-        coordinates = new int[4];
+        coordinates = new int[]{26,37,12,4};
         getEntityPosition();
     }
 
@@ -38,7 +36,6 @@ public class ShowAxeShip extends AxeShip {
          * 0 indicates line 0 which is the axe and boat coordinates.
          * Array: axe_xaxis, axe_yaxis, boat_xaxis, boat_yaxis
          */
-        coordinates = WriteCoord.getCoord(1);
     }
 
     @Override

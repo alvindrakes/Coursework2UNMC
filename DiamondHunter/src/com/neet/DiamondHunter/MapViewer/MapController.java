@@ -30,7 +30,6 @@ import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
-import javafx.scene.text.Text;
 
 /**
  * Main controller for the interface. Any interaction in the
@@ -64,7 +63,6 @@ public class MapController implements Initializable {
     @FXML    private GridPane tileMapping;
     @FXML    private StackPane mapStack;
     @FXML    private Label currentCoord;
-    @FXML    private String tileText;
 
     //Buttons
     @FXML    private Button playButton;
@@ -81,6 +79,7 @@ public class MapController implements Initializable {
         isLaunchedMainGame = false;
         // MapPane has all the loaders for the map
         mp = new MapPane();
+
 
         //Button load images
         Image playImage = new Image(getClass().getResourceAsStream("/Sprites/playbutton.gif"));
@@ -178,7 +177,6 @@ public class MapController implements Initializable {
 		if(as.compareCoordinates(rowIndex, colIndex, ShowAxeShip.BOAT)){
 			label.setGraphic(new ImageView(as.getEntity(ShowAxeShip.BOAT)));
 			tileInfo[rowIndex][colIndex].setEntityType(TileInformation.BOAT);
-			tileText += "\nA boat!";
 			itemType = "Boat";
 			tmpCoords[2] = rowIndex;
 			tmpCoords[3] = colIndex;
@@ -188,7 +186,6 @@ public class MapController implements Initializable {
 		else if(as.compareCoordinates(rowIndex, colIndex, ShowAxeShip.AXE)){
 			label.setGraphic(new ImageView(as.getEntity(ShowAxeShip.AXE)));
 			tileInfo[rowIndex][colIndex].setEntityType(TileInformation.AXE);
-			tileText += "\nAn axe!";
 			itemType = "Axe";
 			tmpCoords[0] = rowIndex;
 			tmpCoords[1] = colIndex;
@@ -198,25 +195,17 @@ public class MapController implements Initializable {
 		else if(sp.compareCoordinates(rowIndex, colIndex, EntityDisplay.UNIQUE)){
 			label.setGraphic(new ImageView(sp.getEntity(EntityDisplay.UNIQUE)));
 			tileInfo[rowIndex][colIndex].setEntityType(TileInformation.PLAYER);
-			tileText += "\nYou are here!";
 		}
 		// display diamonds initial position on map
 		else if(sd.compareCoordinates(rowIndex, colIndex, EntityDisplay.UNIQUE)) {
 			label.setGraphic(new ImageView(sd.getEntity(EntityDisplay.UNIQUE)));
 			tileInfo[rowIndex][colIndex].setEntityType(TileInformation.DIAMOND);
-			tileText += "\nA diamond!";
 		}
 
-		if (tileInfo[rowIndex][colIndex].isNormal()) {
-			tileText += "\nWalkable";
-		} else {
-			tileText += "\nBlocked";
-		}
 
         label.setUserData(tileInfo[rowIndex][colIndex]);
         dropTarget(label, tileInfo[rowIndex][colIndex]);
 
-        final String tt = tileText;
 
         label.setOnMouseEntered(e -> {
             currentCoord.setText(StoreCoord);
@@ -288,7 +277,6 @@ public class MapController implements Initializable {
 
                     target.setGraphic(new ImageView(((Image) db.getContent(DataFormat.IMAGE))));
                     flag = true;
-
                     //update the new coordinates of axe or boat
                     if(itemType == "Axe"){
                         tmpCoords[0] = targetTile.getRow();
@@ -310,7 +298,7 @@ public class MapController implements Initializable {
      * Refreshes the GridPane every time a drag and drop action is completed successfully.
      * Saves the changed coordinates of the moved item as well.
      */
-    private void updateGridPane(){
+    private void updateGridPane() {
         as.getEntityPosition();
         sp.getEntityPosition();
         sd.getEntityPosition();
@@ -350,7 +338,6 @@ public class MapController implements Initializable {
         saveCoor();
         updateGridPane();
     }
-
     @FXML
     private void playGame() {
         if(isLaunchedMainGame == false) {

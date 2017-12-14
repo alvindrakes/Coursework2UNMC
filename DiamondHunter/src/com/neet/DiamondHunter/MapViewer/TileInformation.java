@@ -16,15 +16,6 @@ public class TileInformation {
     private int row;
     private int col;
 
-    //tile type
-    public static final boolean NORMAL = true;
-    public static final boolean BLOCKED = false;
-
-    //tile image, obstacles
-    public static final int GREENTREE = 20;
-    public static final int DEADTREE = 21;
-    public static final int WATER = 22;
-
     //tile image, walkable
     public static final int GRASS = 1;
     public static final int BUSH = 2;
@@ -60,10 +51,6 @@ public class TileInformation {
         return isEntity;
     }
 
-    public int getTileImageType() {
-        return tileImageType;
-    }
-
     public boolean isNormal() {
         return isNormal;
     }
@@ -76,9 +63,6 @@ public class TileInformation {
         return col;
     }
 
-    public int getEntityType() {
-        return entityType;
-    }
 
 
 }
