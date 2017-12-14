@@ -19,7 +19,10 @@ import com.neet.DiamondHunter.Manager.Data;
 import com.neet.DiamondHunter.Manager.GameStateManager;
 import com.neet.DiamondHunter.Manager.JukeBox;
 import com.neet.DiamondHunter.Manager.Keys;
+import com.neet.DiamondHunter.MapViewer.WriteCoord;
 import com.neet.DiamondHunter.TileMap.TileMap;
+
+import javax.swing.*;
 
 public class PlayState extends GameState {
 	
@@ -171,19 +174,18 @@ public class PlayState extends GameState {
 	}
 	
 	private void populateItems() {
-		
-		Item item;
-		
-		item = new Item(tileMap);
-		item.setType(Item.AXE);
-		item.setTilePosition(26, 37);
-		items.add(item);
-		
-		item = new Item(tileMap);
-		item.setType(Item.BOAT);
-		item.setTilePosition(12, 4);
-		items.add(item);
-		
+
+	    //itemCoord loads the new custom item coordinates into the game.
+        int[] itemCoord = WriteCoord.getCoord(1); //1 indicates line 1 which is the axe and boat coordinates.
+        Item item;
+        item = new Item(tileMap);
+        item.setType(Item.AXE);
+        item.setTilePosition(itemCoord[0], itemCoord[1]);
+        items.add(item);
+        item = new Item(tileMap);
+        item.setType(Item.BOAT);
+        item.setTilePosition(itemCoord[2], itemCoord[3]);
+        items.add(item);
 	}
 	
 	public void update() {
