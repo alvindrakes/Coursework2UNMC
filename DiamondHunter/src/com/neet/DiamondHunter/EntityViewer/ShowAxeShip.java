@@ -22,9 +22,12 @@ public class ShowAxeShip extends AxeShip {
     //items
     public static final int BOAT = 0;
     public static final int AXE = 1;
+    public static String storeAxeCoord, storeBoatCoord;
+
 
 
     public ShowAxeShip() {
+
         coordinates = new int[4];
         getEntityPosition();
     }
@@ -73,6 +76,8 @@ public class ShowAxeShip extends AxeShip {
                 + Integer.toString(br) + "," + Integer.toString(bc);
         WriteCoord.overwriteFile(coords,1);
 
+        storeBoatCoord = Integer.toString(br) + "," + Integer.toString(bc);
+        storeAxeCoord = Integer.toString(ar) + "," + Integer.toString(ac);
     }
 
 }

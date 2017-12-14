@@ -71,6 +71,8 @@ public class MapController implements Initializable {
     @FXML    private Button exitButton;
     @FXML    private Button resetButton;
 
+    @FXML    public Label axeCoord, boatCoord;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -155,6 +157,8 @@ public class MapController implements Initializable {
         StoreCoord = Integer.toString(rowIndex)+ "," + Integer.toString(colIndex);
 
         currentCoord.setText("-");
+        axeCoord.setText("26, 37");
+        boatCoord.setText("12, 4");
 
 //        if (tileInfo[rowIndex][colIndex].getTileImageType() == TileInformation.GRASS) {
 //            tileText += "Grassy tile";
@@ -216,6 +220,8 @@ public class MapController implements Initializable {
 
         label.setOnMouseEntered(e -> {
             currentCoord.setText(StoreCoord);
+            axeCoord.setText(ShowAxeShip.storeAxeCoord);
+            boatCoord.setText(ShowAxeShip.storeBoatCoord);
         });
 
 

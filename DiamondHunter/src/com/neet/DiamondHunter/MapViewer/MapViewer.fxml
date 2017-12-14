@@ -54,7 +54,7 @@
                                       <Image url="@/Sprites/axecoordinate.gif" />
                                   </image>
                               </ImageView>
-                              <Label fx:id="axeCoord" text="Label">
+                              <Label fx:id="axeCoord" text="26, 37">
                                  <padding>
                                     <Insets left="45.0" />
                                  </padding>
@@ -68,7 +68,7 @@
                                       <Image url="@/Sprites/boatcoordinate.gif" />
                                   </image>
                               </ImageView>
-                              <Label fx:id="boatCoord" text="Label">
+                              <Label fx:id="boatCoord" text="12, 4">
                                  <padding>
                                     <Insets left="45.0" />
                                  </padding>
