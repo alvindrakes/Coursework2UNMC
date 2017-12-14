@@ -261,6 +261,8 @@ public class MapController implements Initializable {
                 }
             }
             e.consume();
+            TileInformation targetTile = (TileInformation)(target.getUserData());
+            currentCoord.setText(targetTile.getRow() + "," + targetTile.getCol());
         });
 
         target.setOnDragExited(e -> {
