@@ -10,6 +10,7 @@ import com.neet.DiamondHunter.EntityViewer.ShowDiamonds;
 import com.neet.DiamondHunter.EntityViewer.ShowPlayer;
 import com.neet.DiamondHunter.Main.Game;
 
+import com.neet.DiamondHunter.TileMap.Tile;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.SnapshotParameters;
@@ -63,6 +64,7 @@ public class MapController implements Initializable {
     @FXML    private GridPane tileMapping;
     @FXML    private StackPane mapStack;
     @FXML    private Label currentCoord;
+    @FXML    private Label msgBoxChanged;
 
     //Buttons
     @FXML    private Button playButton;
@@ -105,6 +107,7 @@ public class MapController implements Initializable {
         mapPane.setMinSize(mapStack.getPrefWidth(), mapStack.getPrefHeight());
 
         initTileMapping();
+
     }
 
     /**
@@ -155,53 +158,9 @@ public class MapController implements Initializable {
         label.setMinSize(mp.getTileSize(), mp.getTileSize());
         StoreCoord = Integer.toString(rowIndex)+ "," + Integer.toString(colIndex);
 
-        currentCoord.setText("-");
-        axeCoord.setText("26, 37");
-        boatCoord.setText("12, 4");
+        displayDefaultCoord();
 
-//        if (tileInfo[rowIndex][colIndex].getTileImageType() == TileInformation.GRASS) {
-//            tileText += "Grassy tile";
-//        } else if (tileInfo[rowIndex][colIndex].getTileImageType() == TileInformation.BUSH) {
-//            tileText += "Bushy tile";
-//        } else if (tileInfo[rowIndex][colIndex].getTileImageType() == TileInformation.FLOWER) {
-//            tileText += "Flowery tile";
-//        } else if (tileInfo[rowIndex][colIndex].getTileImageType() == TileInformation.GREENTREE) {
-//            tileText += "Green tree";
-//        } else if (tileInfo[rowIndex][colIndex].getTileImageType() == TileInformation.DEADTREE) {
-//            tileText += "Dead tree";
-//        } else if (tileInfo[rowIndex][colIndex].getTileImageType() == TileInformation.WATER) {
-//            tileText += "Water";
-//        }
-
-		//display boat on top of tile
-		if(as.compareCoordinates(rowIndex, colIndex, ShowAxeShip.BOAT)){
-			label.setGraphic(new ImageView(as.getEntity(ShowAxeShip.BOAT)));
-			tileInfo[rowIndex][colIndex].setEntityType(TileInformation.BOAT);
-			itemType = "Boat";
-			tmpCoords[2] = rowIndex;
-			tmpCoords[3] = colIndex;
-			dragSource(label, itemType);
-		}
-		//display axe on top of tile
-		else if(as.compareCoordinates(rowIndex, colIndex, ShowAxeShip.AXE)){
-			label.setGraphic(new ImageView(as.getEntity(ShowAxeShip.AXE)));
-			tileInfo[rowIndex][colIndex].setEntityType(TileInformation.AXE);
-			itemType = "Axe";
-			tmpCoords[0] = rowIndex;
-			tmpCoords[1] = colIndex;
-			dragSource(label, itemType);
-		}
-		//display player initial position on map
-		else if(sp.compareCoordinates(rowIndex, colIndex, EntityDisplay.UNIQUE)){
-			label.setGraphic(new ImageView(sp.getEntity(EntityDisplay.UNIQUE)));
-			tileInfo[rowIndex][colIndex].setEntityType(TileInformation.PLAYER);
-		}
-		// display diamonds initial position on map
-		else if(sd.compareCoordinates(rowIndex, colIndex, EntityDisplay.UNIQUE)) {
-			label.setGraphic(new ImageView(sd.getEntity(EntityDisplay.UNIQUE)));
-			tileInfo[rowIndex][colIndex].setEntityType(TileInformation.DIAMOND);
-		}
-
+		itemsDisplayOnMap(label, colIndex, rowIndex);
 
         label.setUserData(tileInfo[rowIndex][colIndex]);
         dropTarget(label, tileInfo[rowIndex][colIndex]);
@@ -253,22 +212,93 @@ public class MapController implements Initializable {
 
         target.setOnDragEntered(e -> {
             if (e.getGestureSource() != target && e.getDragboard().hasContent(DataFormat.IMAGE)) {
-                // if the tile has items on it or is blocked, set colour to red
-                if (ti.isEntity() || !ti.isNormal()) {
-                    target.setStyle("-fx-background-color: rgba(255, 0, 0, 0.5)");
-                } else {
-                    target.setStyle("-fx-background-color: rgba(0, 0, 0, 0)");
-                }
+                itemsDropTileCheck(target, ti);
             }
             e.consume();
-            TileInformation targetTile = (TileInformation)(target.getUserData());
-            currentCoord.setText(targetTile.getRow() + "," + targetTile.getCol());
+            printMouseCoordDrag(target);
         });
 
         target.setOnDragExited(e -> {
             target.setStyle(null);
         });
 
+        itemsSuccessDrop(target, ti);
+    }
+
+    /** display the mouse coordination while dragging
+     *
+     * @param target
+     */
+    private void printMouseCoordDrag(Label target) {
+        TileInformation targetTile = (TileInformation)(target.getUserData());
+        currentCoord.setText(targetTile.getRow() + "," + targetTile.getCol());
+    }
+
+
+    private void displayDefaultCoord() {
+        currentCoord.setText("-");
+        axeCoord.setText("26,37");
+        boatCoord.setText("12,4");
+    }
+
+    private void itemsDisplayOnMap(Label label, int colIndex, int rowIndex) {
+        //display boat on top of tile
+        if(as.compareCoordinates(rowIndex, colIndex, ShowAxeShip.BOAT)){
+            label.setGraphic(new ImageView(as.getEntity(ShowAxeShip.BOAT)));
+            tileInfo[rowIndex][colIndex].setEntityType(TileInformation.BOAT);
+            itemType = "Boat";
+            tmpCoords[2] = rowIndex;
+            tmpCoords[3] = colIndex;
+            dragSource(label, itemType);
+        }
+        //display axe on top of tile
+        else if(as.compareCoordinates(rowIndex, colIndex, ShowAxeShip.AXE)){
+            label.setGraphic(new ImageView(as.getEntity(ShowAxeShip.AXE)));
+            tileInfo[rowIndex][colIndex].setEntityType(TileInformation.AXE);
+            itemType = "Axe";
+            tmpCoords[0] = rowIndex;
+            tmpCoords[1] = colIndex;
+            dragSource(label, itemType);
+        }
+        //display player initial position on map
+        else if(sp.compareCoordinates(rowIndex, colIndex, EntityDisplay.UNIQUE)){
+            label.setGraphic(new ImageView(sp.getEntity(EntityDisplay.UNIQUE)));
+            tileInfo[rowIndex][colIndex].setEntityType(TileInformation.PLAYER);
+        }
+        // display diamonds initial position on map
+        else if(sd.compareCoordinates(rowIndex, colIndex, EntityDisplay.UNIQUE)) {
+            label.setGraphic(new ImageView(sd.getEntity(EntityDisplay.UNIQUE)));
+            tileInfo[rowIndex][colIndex].setEntityType(TileInformation.DIAMOND);
+        }
+
+    }
+
+
+    /** check whether items can be placed
+     *
+     * @param target
+     * @param ti
+     */
+    private void itemsDropTileCheck(Label target, TileInformation ti) {
+        // if the tile has items on it or is blocked, set colour to red
+        if (ti.isEntity() || !ti.isNormal()) {
+            target.setStyle("-fx-background-color: rgba(255, 0, 0, 0.5)");
+            msgBoxChanged.setText("You can't place the item here!");  //tell user that items can't be placed here
+        } else {
+            target.setStyle("-fx-background-color: rgba(0, 0, 0, 0)");
+            msgBoxChanged.setText("Use your mouse to move the " +
+                    "\naxe and boat on the map. " +
+                    "\n\nFunction of buttons on the right:" +
+                    "\n1. Play game\n2. Exit game\n3. Reset items position");  //if can, display default message
+        }
+    }
+
+    /** Set the graphic and data needed if drop succeed
+     *
+     * @param target
+     * @param ti
+     */
+    private void itemsSuccessDrop(Label target, TileInformation ti) {
         if (!ti.isEntity() && ti.isNormal()) {
             target.setOnDragDropped((DragEvent e) -> {
 
