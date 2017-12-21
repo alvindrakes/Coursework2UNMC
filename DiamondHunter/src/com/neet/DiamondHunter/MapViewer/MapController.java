@@ -367,7 +367,7 @@ public class MapController implements Initializable {
         updateGridPane();
     }
     @FXML
-    
+
     private void playGame() {
         if(isLaunchedMainGame == false) {
             Game.runGame();
