@@ -10,7 +10,7 @@ import javafx.scene.image.WritableImage;
  */
 public interface EntityDisplay {
 	
-	public static final int UNIQUE = -1;
+	int UNIQUE = -1;
 	
 	/**
 	 * Retrieves the entity position from the text file generated.

@@ -165,16 +165,13 @@ public class MapController implements Initializable {
         label.setUserData(tileInfo[rowIndex][colIndex]);
         dropTarget(label, tileInfo[rowIndex][colIndex]);
 
-
         label.setOnMouseEntered(e -> {
             currentCoord.setText(StoreCoord);
             axeCoord.setText(ShowAxeShip.storeAxeCoord);
             boatCoord.setText(ShowAxeShip.storeBoatCoord);
         });
 
-
         tileMapping.add(label, colIndex, rowIndex);
-
     }
 
     private void dragSource(Label source, String item) {
@@ -197,7 +194,6 @@ public class MapController implements Initializable {
 
     /**
      * Method to drop axe/boat on any good tile
-     *
      * @param target The label where the dragging object is currently on
      * @param ti The tile information of every tile in the map
      */
@@ -354,13 +350,13 @@ public class MapController implements Initializable {
         as.updateEntityPosition(tmpCoords[0], tmpCoords[1], tmpCoords[2], tmpCoords[3]);
     }
 
-
     /**
      * Launched the game if the game has never been launched during the
      * lifecycle of Map Viewer application. If the game is launched at most
      * once, the game will be kept alive throughout the lifecycle of the Map
      * Viewer application. Resources are not released throughout the lifecycle.
      */
+
     @FXML
     private void resetButton() {
         tmpCoords[0] = 26;
@@ -371,6 +367,7 @@ public class MapController implements Initializable {
         updateGridPane();
     }
     @FXML
+    
     private void playGame() {
         if(isLaunchedMainGame == false) {
             Game.runGame();

@@ -1,19 +1,16 @@
-package com.neet.DiamondHunter.EntityViewer;
-
-/* Get position of axe and boat
+/**
+ *  Get position of axe and boat
  * and return the value
  * Update position of axe and boat
  * Get axe and boat sprites
- * */
+ *
+ */
 
+package com.neet.DiamondHunter.EntityViewer;
 
-import com.neet.DiamondHunter.MapViewer.MapController;
 import com.neet.DiamondHunter.MapViewer.WriteCoord;
 
-import javafx.fxml.FXML;
 import javafx.scene.image.WritableImage;
-
-import java.awt.*;
 
 public class ShowAxeShip extends AxeShip {
 

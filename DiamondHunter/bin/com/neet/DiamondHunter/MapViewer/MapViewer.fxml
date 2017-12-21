@@ -12,6 +12,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane fx:id="mapPane" prefHeight="816.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.neet.DiamondHunter.MapViewer.MapController">
@@ -88,9 +89,24 @@
                               </ImageView>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Message" StackPane.alignment="TOP_LEFT">
                                  <StackPane.margin>
-                                    <Insets left="10.0" top="10.0" />
+                                    <Insets left="25.0" top="10.0" />
                                  </StackPane.margin>
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
                               </Text>
+                              <HBox alignment="CENTER" prefHeight="120.0" prefWidth="200.0">
+                                 <children>
+                                    <Label fx:id="msgBoxChanged" text="Use your mouse to move the&#10;axe and boat on the map.&#10;&#10;Function of buttons on the right:&#10;1. Play game&#10;2. Exit game&#10;3. Reset items position">
+                                       <font>
+                                          <Font size="12.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <padding>
+                                    <Insets top="5.0" />
+                                 </padding>
+                              </HBox>
                            </children>
                            <opaqueInsets>
                               <Insets />

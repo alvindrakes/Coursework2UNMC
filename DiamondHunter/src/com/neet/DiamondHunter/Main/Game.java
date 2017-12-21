@@ -20,7 +20,6 @@ public class Game {
 		window.setLocationRelativeTo(null);
 		window.setVisible(true);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
 	}
 	
 }
